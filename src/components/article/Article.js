@@ -1,3 +1,6 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-sequences */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
@@ -20,11 +23,7 @@ const Articles = () => {
     [],
   )
 
-  const [articles, setArticles] = useState([
-    {
-      multimedia: [{}],
-    },
-  ])
+  const [articles, setArticles] = useState([ {multimedia: []} ])
 
   const getArticle = async () => {
     const articles = await axios.get(
@@ -41,7 +40,11 @@ const Articles = () => {
     <div>
       {articles.map(({ title, multimedia, uri }) => (
         <div className="card text-center">
-          <img src={multimedia.url} alt="image" />
+          {multimedia.map(({uri})) => {
+            <img src={url} alt="image"/>
+
+            console.log(url)
+          })}
           <h3 style={h1Style} key={uri}>
             {title}
           </h3>
@@ -51,11 +54,6 @@ const Articles = () => {
   )
 }
 
-// const newsStyle = {
-//   display: 'grid',
-//   gridGap: '1rem',
-//   gridTemplateColumns: 'repeat(3, 1fr)',
-// };
 
 const h1Style = { color: 'black' }
 
