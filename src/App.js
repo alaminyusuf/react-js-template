@@ -5,13 +5,13 @@ import Article from './components/article/Article'
 import Home from './components/pages/Home'
 import Navbar from './components/layout/Navbar'
 // import Context
-// import NytimesState from './components/context/nytimes/NytimesState'
+import NytimesState from './components/context/nytimes/NytimesState'
 
 // import styles
 import './App.css'
 
 const App = () => (
-  // <NytimesState>
+  <NytimesState>
   <Router>
     <div className="app">
       <div className="section">
@@ -26,7 +26,7 @@ const App = () => (
       </div>
     </div>
   </Router>
-  // </NytimesState>
+  </NytimesState>
 )
 
 export default App
