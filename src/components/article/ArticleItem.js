@@ -1,9 +1,19 @@
 // core modules
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom'
+
+// context API 
+import NytimesContext from '../../components/context/nytimes/nytimesContext'
 
 
 const ArticleItem = ({ news }) => {
+
+  const nytimesContext = useContext(NytimesContext);
+
+  const { news} = githubContext;
+
+  //  hook to fetch data on component mount: Returning null
+ 
   const media = news.multimedia.map(img => img)
   const img = media.map((img, index) => {
     return img.url

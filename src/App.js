@@ -12,20 +12,20 @@ import './App.css'
 
 const App = () => (
   <NytimesState>
-  <Router>
-    <div className="app">
-      <div className="section">
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/article" component={Article} />
-          </Switch>
+    <Router>
+      <div className="app">
+        <div className="section">
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/article" component={Article} />
+            </Switch>
+          </div>
         </div>
       </div>
-    </div>
-  </Router>
+    </Router>
   </NytimesState>
 )
 

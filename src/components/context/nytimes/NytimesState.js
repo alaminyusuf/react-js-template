@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import axios from 'axios'
 import NytimesContext from './nytimesContext'
 import NytimesReducer from './nytimesReducer'
@@ -15,17 +15,24 @@ const NytimesState = props => {
 
   // get articles
   const getArticles = async () => {
-    const items = await axios.get(
-      'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=rx08UMNqJbQvOJtCC27cxdoj8Ev2pnDH',
-    )
-    
-    console.log(items.data)
-    dispatch({
-      type: GET_ARTICLES,
-      payload: items.data
-    })
-  }
-  // }
+    try {
+      console.log(res.data.results)
+      const news = await axios.get(
+        `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.API_KEY}`
+      );
+
+      dispatch({
+        type: GET_ARTICLES,
+        payload: news.data.results
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  useEffect(() => {
+    getArticles();
+  }, []);
+ 
 
   return (
     <NytimesContext.Provider
@@ -37,6 +44,6 @@ const NytimesState = props => {
       {props.children}
     </NytimesContext.Provider>
   )
-    }
+ }
 
 export default NytimesState
