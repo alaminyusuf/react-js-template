@@ -7,8 +7,7 @@ import { GET_ARTICLES } from '../types'
 
 const NytimesState = props => {
   const initialState = {
-    // article: {},
-    articles: [],
+    news: [],
   }
 
   const [state, dispatch] = useReducer(NytimesReducer, initialState)
@@ -16,34 +15,37 @@ const NytimesState = props => {
   // get articles
   const getArticles = async () => {
     try {
-      console.log(res.data.results)
-      const news = await axios.get(
-        `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.API_KEY}`
-      );
+      const res = await axios.get(
+        'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=rx08UMNqJbQvOJtCC27cxdoj8Ev2pnDH',
+      )
 
       dispatch({
         type: GET_ARTICLES,
-        payload: news.data.results
-      });
-    } catch (e) {
-      console.error(e);
+        payload: res.data.results,
+      })
+      console.log(res.data.results)
+    } catch (error) {
+      console.error(error)
     }
-  };
-  useEffect(() => {
-    getArticles();
-  }, []);
- 
+  }
+  useEffect(
+    () => {
+      getArticles()
+    },
+    // eslint-disable-next-line
+    [],
+  )
 
   return (
     <NytimesContext.Provider
       value={{
-        articles: state.articles,
-        getArticles,
+        news: state.news,
+        // getArticles,
       }}
     >
       {props.children}
     </NytimesContext.Provider>
   )
- }
+}
 
 export default NytimesState
