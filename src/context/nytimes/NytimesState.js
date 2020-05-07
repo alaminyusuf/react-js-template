@@ -3,17 +3,19 @@ import axios from 'axios'
 import NytimesContext from './nytimesContext'
 import NytimesReducer from './nytimesReducer'
 
-import { GET_ARTICLES } from '../types'
+import { GET_ARTICLES, SET_LOADING } from '../types'
 
 const NytimesState = props => {
   const initialState = {
-    news: [],
+    articles: [],
+    loading: false,
   }
 
   const [state, dispatch] = useReducer(NytimesReducer, initialState)
 
   // get articles
   const getArticles = async () => {
+    setLoading()
     try {
       const res = await axios.get(
         'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=rx08UMNqJbQvOJtCC27cxdoj8Ev2pnDH',
@@ -28,19 +30,23 @@ const NytimesState = props => {
       console.error(error)
     }
   }
-  useEffect(
-    () => {
-      getArticles()
-    },
-    // eslint-disable-next-line
-    [],
-  )
+  // useEffect(
+  //   () => {
+  //     getArticles()
+  //   },
+  //   // eslint-disable-next-line
+  //   [],
+  // )
+
+  const setLoading = () => dispatch({ type: SET_LOADING })
 
   return (
     <NytimesContext.Provider
       value={{
-        news: state.news,
-        // getArticles,
+        articles: state.news,
+        loading: state.loading,
+        getArticles,
+        setLoading,
       }}
     >
       {props.children}

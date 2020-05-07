@@ -5,7 +5,7 @@ import Article from './components/article/Article'
 import Home from './components/pages/Home'
 import Navbar from './components/layout/Navbar'
 // import Context
-import NytimesState from './components/context/nytimes/NytimesState'
+import NytimesState from './context/nytimes/NytimesState'
 
 // import styles
 import './App.css'

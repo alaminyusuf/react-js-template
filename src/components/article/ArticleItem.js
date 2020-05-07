@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 // core modules
 import React, { Fragment } from 'react'
 

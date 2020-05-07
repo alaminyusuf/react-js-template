@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import { GET_ARTICLES } from '../types'
+import { GET_ARTICLES, SET_LOADING } from '../types'
 
 export default (state, action) => {
   switch (action.type) {
@@ -8,12 +8,11 @@ export default (state, action) => {
         ...state,
         article: action.payload,
       }
-    // case GET_SINGLE_ARTICLE:
-    //   return {
-    //     ...state,
-    //     article: action.payload,
-    //   }
-
+      case SET_LOADING:
+        return {
+          ...state,
+          loading: true,
+        }
     default:
       return state
   }
