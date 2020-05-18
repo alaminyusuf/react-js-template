@@ -3,3 +3,5 @@
 [0319/204612.512:ERROR:process_info.cc(359)] UncheckedAllocate
 [0319/204746.523:ERROR:process_info.cc(359)] UncheckedAllocate
 [0427/181351.632:ERROR:http_transport_win.cc(276)] WinHttpSendRequest: The operation completed successfully. (0x0)
+[0508/150814.749:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0508/150814.796:ERROR:exception_snapshot_win.cc(98)] thread ID 5320 not found in process

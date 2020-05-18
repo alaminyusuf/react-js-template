@@ -1,3 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
 import React, { useReducer, useEffect } from 'react'
 import axios from 'axios'
 import NytimesContext from './nytimesContext'
@@ -18,7 +23,7 @@ const NytimesState = props => {
     setLoading()
     try {
       const res = await axios.get(
-        'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=rx08UMNqJbQvOJtCC27cxdoj8Ev2pnDH',
+        `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`,
       )
 
       dispatch({
@@ -30,13 +35,13 @@ const NytimesState = props => {
       console.error(error)
     }
   }
-  // useEffect(
-  //   () => {
-  //     getArticles()
-  //   },
-  //   // eslint-disable-next-line
-  //   [],
-  // )
+  useEffect(
+    () => {
+      getArticles()
+    },
+    // eslint-disable-next-line
+    [],
+  )
 
   const setLoading = () => dispatch({ type: SET_LOADING })
 

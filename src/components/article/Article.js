@@ -1,3 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 // core modules
 import React, { useEffect, useContext } from 'react'
 
@@ -15,12 +20,13 @@ const Articles = ({ match }) => {
   const nytimesContext = useContext(NytimesContext)
   const { articles, loading } = nytimesContext
 
-  useEffect(() => {
-    getArticles(match)
-  },
-  // eslint-disable-next-line
-  [])
-
+  useEffect(
+    () => {
+      getArticles(match)
+    },
+    // eslint-disable-next-line
+    [],
+  )
 
   if (loading) <Loader />
 

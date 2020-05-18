@@ -8,11 +8,11 @@ export default (state, action) => {
         ...state,
         article: action.payload,
       }
-      case SET_LOADING:
-        return {
-          ...state,
-          loading: true,
-        }
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      }
     default:
       return state
   }
